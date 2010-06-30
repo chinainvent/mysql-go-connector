@@ -4,8 +4,8 @@ TARG=db
 CGOFILES=mysql.go
 GOFILES=api.go
 
-CGO_CFLAGS=-I/usr/include/mysql
-CGO_LDFLAGS=-rdynamic -L/usr/lib/mysql -lmysqlclient_r -lz -lpthread -lcrypt -lnsl -lm -lpthread -lssl -lcrypto
+CGO_CFLAGS=$(shell mysql_config --include)
+CGO_LDFLAGS=$(shell mysql_config --libs)
 
 CLEANFILES+=example
 

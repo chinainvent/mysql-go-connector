@@ -1,0 +1,50 @@
+Name
+    mysql-go-connector - A go package to access mysql server by 
+    wrapping mysql C client library. 
+
+Version
+    v0.01
+
+Synopsis
+
+Description
+
+Installation
+    $ git clone http://github.com/chinainvent/mysql-go-connector
+    $ make
+    $ ./example
+
+Compatibility
+    The following versions of mysqld should work with this package:
+    *   >= mysqld 5.1.47
+
+Report Bugs
+    Although a lot of effort has been put into testing and code tuning,
+    there must be some serious bugs lurking somewhere in this module. So
+    whenever you are bitten by any quirks, please don't hesitate to
+
+    1.  send a bug report or even patches to <agentzh@gmail.com>,
+
+    2.  or create a ticket on the issue tracking interface
+        (<http://github.com/chinainvent/mysql-go-connector/issues >) provided by
+        GitHub.
+
+Source Repository
+    http://github.com/chinainvent/mysql-go-connector
+
+ChangeLog
+
+TODO
+    * add testing code
+
+Author
+    chinainvent <chinainvent.zyk@gmail.com>
+
+Copyright & License
+    Use of this source code is governed by a BSD-style license that can be found
+    in the LICENSE file.
+
+    Copyright (c) 2009, chinainvent <chinainvent.zyk@gmail.com>
+
+See Also
+    http://golang.org/
