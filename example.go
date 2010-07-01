@@ -6,6 +6,7 @@ import (
 )
 
 
+//This example shows how to execute a query using db pakcage api.
 func Test(sql db.SQL){
 
     errnum := sql.Connect("localhost", "webapi", "itbuwebapi", "webapi", 3306)
