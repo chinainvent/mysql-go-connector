@@ -5,14 +5,18 @@ Name
 Version
     v0.01
 
-Synopsis
-
-Description
+Preparation
+    1. Before to run test case, you should start mysqld in localhost, and create a database: 
+        mysql> create database webapi;
+        mysql> GRANT USAGE ON webapi.* to webapi@localhost IDENTIFIED BY 'itbuwebapi';
+        mysql> GRANT ALL ON webapi.* to webapi@localhost;
+    2. Install mysql-devel
+        $ yum -y install mysql-devel.i686 (on my Fedora13)
 
 Installation
     $ git clone http://github.com/chinainvent/mysql-go-connector
     $ make
-    $ ./example
+    $ make test
 
 Compatibility
     The following versions of mysqld should work with this package:
