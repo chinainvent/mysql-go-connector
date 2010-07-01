@@ -64,12 +64,16 @@ func (mysql *MySQL) Close() {
 
 //检查一个连接是否已关闭
 func (mysql *MySQL) IsClosed() bool {
+    if mysql.my==nil {
+        return true
+    }
+
 	f := C.mysql_ping(mysql.my)
     mysql.errno = int(f)
 	if f == 0 {
-        return true
+        return false
 	}
-	return false
+	return true
 }
 
 //执行SQL语句(select, insert, update, delete, ...), 

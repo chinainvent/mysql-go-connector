@@ -6,7 +6,8 @@ var errMsg = [...]string {
     2:"connect failed", 
     3:"connection was closed", 
     4:"not select stmt", 
-    5:"other error"}
+    5:"other error",
+}
 
 type SQL interface {
     //建立一个到数据库服务器的连接, 
