@@ -36,11 +36,6 @@ func main() {
 
     var sql db.MySQL
     Test(&sql)
-    (db.SQL)(&sql).Close()
-
-    var sq db.SQL = new(db.MySQL)
-    sq.Close()
-
     return
 }
 

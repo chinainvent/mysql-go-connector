@@ -52,7 +52,7 @@ func (mysql *MySQL) Connect(host, usr, pwd, db string, port uint) (errnum int){
 } 
 
 //关闭一个连接
-func (mysql MySQL) Close() {
+func (mysql *MySQL) Close() {
 	C.mysql_close(mysql.my)
     mysql.my = nil
     if mysql.rs!=nil {
