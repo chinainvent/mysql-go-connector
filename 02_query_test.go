@@ -2,7 +2,6 @@ package db
 
 import (
     "testing"
-    "log"
 )
 
 type queryTest struct {
@@ -15,7 +14,6 @@ var queryTests = []queryTest{
 }
 
 func TestQuery(t *testing.T) {
-    log.Stdoutf("TestQuery")
     var sql MySQL
     for _, d := range queryTests {
         v := sql.Connect("localhost", "webapi", "itbuwebapi", "webapi", 3306)

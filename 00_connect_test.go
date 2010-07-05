@@ -2,7 +2,6 @@ package db
 
 import (
     "testing"
-    "log"
 )
 
 type connTestInput struct {
@@ -32,7 +31,6 @@ var connTests = []connTest {
 }
 
 func TestConnect(t *testing.T) {
-    log.Stdoutf("TestConnect")
     var sql MySQL
     for _, d := range connTests {
         in := d.in
@@ -44,7 +42,6 @@ func TestConnect(t *testing.T) {
 }
 
 func TestPing(t *testing.T) {
-    log.Stdoutf("TestPing")
     var sql MySQL
     for _, d := range connTests {
         in := d.in
@@ -56,7 +53,6 @@ func TestPing(t *testing.T) {
 }
 
 func TestClose(t *testing.T) {
-    log.Stdoutf("TestClose")
     var sql MySQL
     for _, d := range connTests {
         in := d.in

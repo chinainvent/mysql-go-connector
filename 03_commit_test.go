@@ -2,7 +2,6 @@ package db
 
 import (
     "testing"
-    "log"
 )
 
 type commitInput struct {
@@ -20,7 +19,6 @@ var commitTests = []commitTest{
 }
 
 func TestCommit(t *testing.T) {
-    log.Stdoutf("TestCommit")
     var sql MySQL
     for _, d := range commitTests {
         v := sql.Connect("localhost", "webapi", "itbuwebapi", "webapi", 3306)

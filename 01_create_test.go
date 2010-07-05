@@ -2,7 +2,6 @@ package db
 
 import (
     "testing"
-    "log"
 )
 
 type prepDataTest struct {
@@ -18,7 +17,6 @@ var prepDateTests = []prepDataTest{
 }
 
 func TestCreateTable(t *testing.T) {
-    log.Stdoutf("TestCreateTable")
     var sql MySQL
     for _, d := range prepDateTests {
         v := sql.Connect("localhost", "webapi", "itbuwebapi", "webapi", 3306)
