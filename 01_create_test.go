@@ -12,7 +12,7 @@ type prepDataTest struct {
 
 var prepDateTests = []prepDataTest{
     prepDataTest{"drop table if exists t", 1},
-    prepDataTest{"create table t (a varchar(100), b varchar(100))", 1},
+    prepDataTest{"create table t (a varchar(100), b varchar(100)) ENGINE=InnoDB DEFAULT CHARSET=utf8", 1},
     prepDataTest{"insert into t(a, b) values('a', 'b')", 1},
     prepDataTest{"insert into t(a, b) values('c', 'd')", 1},
 }

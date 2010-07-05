@@ -79,6 +79,11 @@ func (mysql *MySQL) IsClosed() bool {
 //执行SQL语句(select, insert, update, delete, ...), 
 //成功返回0, 否则返回errnum
 func (mysql *MySQL) Execute(stmt string) (errnum int) {
+    if mysql.my==nil {
+        mysql.errno=3
+        return 3
+    }
+
 	s := C.CString(stmt)
 	defer C.free(unsafe.Pointer(s))
 
