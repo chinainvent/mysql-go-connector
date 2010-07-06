@@ -18,12 +18,12 @@ func TestQuery(t *testing.T) {
     for _, d := range queryTests {
         v := sql.Connect("localhost", "webapi", "itbuwebapi", "webapi", 3306)
         if v!= 0 {
-            t.Errorf("Connect error.")
+            t.Fatalf("Connect({localhost, webapi, itbuwebapi, webapi})=%v, want 0.", v )
         }
 
         v = sql.Execute(d.in)
         if v!=0 {
-            t.Errorf("Execute(%v)=%v, want 0.", d.in, v)
+            t.Fatalf("Execute(%v)=%v, want 0.", d.in, v)
         }
 
         var result string 

@@ -5,6 +5,7 @@ import (
 )
 
 type commitInput struct {
+    mod  bool       //commit mode
     cStr string     //commit string
     qStr string     //query string
 }
@@ -15,7 +16,8 @@ type commitTest struct {
 }
 
 var commitTests = []commitTest{
-    commitTest{ commitInput{"delete from t", "select a, b from t"}, "a,b|c,d|"},
+    commitTest{ commitInput{false, "delete from t", "select a, b from t"}, "a,b|c,d|"},
+    commitTest{ commitInput{true, "delete from t", "select a, b from t"}, ""},
 }
 
 func TestCommit(t *testing.T) {
@@ -23,17 +25,17 @@ func TestCommit(t *testing.T) {
     for _, d := range commitTests {
         v := sql.Connect("localhost", "webapi", "itbuwebapi", "webapi", 3306)
         if v!= 0 {
-            t.Errorf("Connect error.")
+            t.Fatalf("Connect({localhost, webapi, itbuwebapi, webapi})=%v, want 0.", v )
         }
 
-        v = sql.SetAutoCommit(false)
+        v = sql.SetAutoCommit(d.in.mod)
         if v!=0 {
-            t.Errorf("SetAutoCommit(fase)=%v, want 0", v)
+            t.Fatalf("SetAutoCommit(fase)=%v, want 0", v)
         }
 
         v = sql.Execute(d.in.cStr)
         if v!=0 {
-            t.Errorf("Execute(%v)=%v, want 0.", d.in.cStr, v)
+            t.Fatalf("Execute(%v)=%v, want 0.", d.in.cStr, v)
         }
 
         ch := make(chan int)
@@ -41,7 +43,7 @@ func TestCommit(t *testing.T) {
             var sql MySQL
             v := sql.Connect("localhost", "webapi", "itbuwebapi", "webapi", 3306)
             if v!= 0 {
-                t.Errorf("Connect error.")
+                t.Fatalf("Connect error.")
             }
             
             v = sql.Execute(d.in.qStr)
@@ -61,12 +63,12 @@ func TestCommit(t *testing.T) {
 
         v = sql.Commit()
         if v!=0 {
-            t.Errorf("Commit=%v, want 0", v)
+            t.Fatalf("Commit=%v, want 0", v)
         }
 
         v = sql.Execute(d.in.qStr)
         if v!=0 {
-            t.Errorf("Execute(%v)=%v, want 0.", d.in.qStr, v)
+            t.Fatalf("Execute(%v)=%v, want 0.", d.in.qStr, v)
         }
 
         var result string 

@@ -21,7 +21,7 @@ func TestCreateTable(t *testing.T) {
     for _, d := range prepDateTests {
         v := sql.Connect("localhost", "webapi", "itbuwebapi", "webapi", 3306)
         if v!= 0 {
-            t.Errorf("Connect error.")
+            t.Fatalf("Connect({localhost, webapi, itbuwebapi, webapi})=%v, want 0.", v )
         }
 
         v = sql.Execute(d.in)
